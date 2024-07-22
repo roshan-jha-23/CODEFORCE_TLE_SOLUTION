@@ -4,30 +4,30 @@ public class UnitArray {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
-
         while (t-- > 0) {
             int n = sc.nextInt();
-            int[] a = new int[n];
-            int cntp = 0;
-            int cntm = 0;
+            int cntno = 0;
+            int cntpo = 0;
 
             for (int i = 0; i < n; i++) {
-                a[i] = sc.nextInt();
-                if (a[i] == -1) cntm++;
-                else cntp++;
+                int elm = sc.nextInt();
+                if (elm == -1) cntno++;
+                else cntpo++;
             }
 
-           if(cntp>=cntm){
-               if((cntm&1)==1) System.out.println(1);
-               else System.out.println(0);
-               return;
-           }else{
-               int op=cntm-n/2;
-               if(((n/2)&1)==1)op++;
-               System.out.println(op);
-           }
+             if (cntpo >= cntno) {
+                if ((cntno & 1) == 0) System.out.println(0);
+                else System.out.println(1);
+            } else {
+                int op = 0;
+                op+=(cntno-cntpo+1)/2;
+                cntno-=op;
+                if((cntno&1)==1){
+                    op++;
+                }
+                System.out.println(op);
+            }
         }
-
         sc.close();
     }
 }
